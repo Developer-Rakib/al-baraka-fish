@@ -81,12 +81,12 @@ export default function SalesTable({ salesData, handleDelete }) {
         <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
             <h1 className="text-center font-semibold text-xl text-gray-600 mb-1">Today Sales</h1>
             <div className="mb-2 text-right">
-                <button
+                {/* <button
                     onClick={handleDownloadPDF}
                     className="px-1.5 py-1 text-xs mr-1 bg-blue-600 text-white rounded"
                 >
                     Download PDF
-                </button>
+                </button> */}
 
                 <button
                     onClick={exportToExcel}

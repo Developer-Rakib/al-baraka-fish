@@ -69,40 +69,70 @@ export default function DailySales() {
 
 
 
+
+
     const tableRef = useRef();
-    const handleDownloadPDF = async () => {
-        const element = tableRef.current;
+    // const handleDownloadPDF = async () => {
+    //     const original = tableRef.current;
 
-        const canvas = await html2canvas(element, {
-            scale: 2,
-            useCORS: true,
-        });
+    //     // Clone the element so we don’t affect UI
+    //     const clonedNode = original.cloneNode(true);
+    //     document.body.appendChild(clonedNode);
 
-        const imgData = canvas.toDataURL('image/jpeg', 0.7); // Compress here
+    //     // Force style overrides to remove problematic colors
+    //     const elements = clonedNode.querySelectorAll("*");
 
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const pageWidth = pdf.internal.pageSize.getWidth();
-        const pageHeight = pdf.internal.pageSize.getHeight();
+    //     const setImportant = (el, prop, value) => {
+    //         el.style.setProperty(prop, value, "important");
+    //     };
 
-        const imgWidth = pageWidth;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    //     elements.forEach((el) => {
+    //         const computed = window.getComputedStyle(el);
 
-        let heightLeft = imgHeight;
-        let position = 0;
+    //         if (computed.color.includes("oklch")) setImportant(el, "color", "#000");
+    //         if (computed.backgroundColor.includes("oklch")) setImportant(el, "background-color", "#fff");
+    //         if (computed.borderColor.includes("oklch")) setImportant(el, "border-color", "#000");
 
-        pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
-        heightLeft -= pageHeight;
+    //         setImportant(el, "box-shadow", "none");
+    //     });
 
-        while (heightLeft > 0) {
-            position -= pageHeight;
-            pdf.addPage();
-            pdf.addImage(imgData, 'JPEG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
-            heightLeft -= pageHeight;
-        }
+    //     // Position offscreen for capture
+    //     clonedNode.style.position = "absolute";
+    //     clonedNode.style.top = "-10000px";
+    //     clonedNode.style.left = "-10000px";
 
-        pdf.save(`${date}.pdf`);
+    //     const canvas = await html2canvas(clonedNode, {
+    //         scale: 2,
+    //         useCORS: true,
+    //     });
 
-    };
+    //     document.body.removeChild(clonedNode); // cleanup
+
+    //     const imgData = canvas.toDataURL("image/jpeg", 0.7);
+    //     const pdf = new jsPDF("p", "mm", "a4");
+    //     const pageWidth = pdf.internal.pageSize.getWidth();
+    //     const pageHeight = pdf.internal.pageSize.getHeight();
+
+    //     const imgWidth = pageWidth;
+    //     const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    //     let heightLeft = imgHeight;
+    //     let position = 0;
+
+    //     pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, "FAST");
+    //     heightLeft -= pageHeight;
+
+    //     while (heightLeft > 0) {
+    //         position -= pageHeight;
+    //         pdf.addPage();
+    //         pdf.addImage(imgData, "JPEG", 0, position, imgWidth, imgHeight, undefined, "FAST");
+    //         heightLeft -= pageHeight;
+    //     }
+
+    //     pdf.save(`${date}.pdf`);
+    // };
+
+
 
 
     const exportToExcel = () => {
@@ -144,12 +174,12 @@ export default function DailySales() {
                     <div ref={tableRef} className="overflow-x-auto">
                         <h1 className="text-center font-semibold text-xl text-gray-600 mb-1">{date} Sales</h1>
                         <div className="mb-2 text-right">
-                            <button
+                            {/* <button
                                 onClick={handleDownloadPDF}
                                 className="px-1.5 py-1 text-xs mr-1 bg-blue-600 text-white rounded"
                             >
                                 Download PDF
-                            </button>
+                            </button> */}
 
                             <button
                                 onClick={exportToExcel}
