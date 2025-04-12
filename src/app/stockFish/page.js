@@ -14,7 +14,7 @@ export default function Inventory() {
 
 
     useEffect(() => {
-        axios.get(`https://admin.mzamanbd.com/fishStock`) // Replace with your API URL
+        axios.get(`fishStock.json`) // Replace with your API URL
             .then(response => setFishStock(response.data))
             .catch(error => console.error("Error fetching sales data:", error));
 
@@ -153,7 +153,7 @@ export default function Inventory() {
 
                                                 </th>
                                                 <th scope="col" className="py-2 sm:text-[12px] text-[9px] sm:py-3">
-                                                    Item Name
+                                                    Fish Name
                                                 </th>
                                                 <th scope="col" className="py-2 sm:text-[12px] text-[9px]  sm:py-3">
                                                     Buy Price

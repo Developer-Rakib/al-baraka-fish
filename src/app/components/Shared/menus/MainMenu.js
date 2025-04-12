@@ -56,7 +56,7 @@ function MainMenu() {
                     </label>
                 } */}
                 {/* <img className='sm:w-52 w-48' src={logo} alt="" /> */}
-                <h2 className=' text-2xl w-[202px]  tracking-wide headerLogo'>Al-Baraka Fish</h2>
+                <h2 className=' text-xl sm:text-2xl w-[202px]  tracking-wide headerLogo'>Al-Baraka Fish</h2>
 
                 <span onClick={navBtnHndle} className='md:hidden cursor-pointer absolute right-6 text-xl top-[20px]'>{toggle ? <MdOutlineClose /> : <CiMenuBurger />}</span>
                 {/* <MdOutlineClose></MdOutlineClose>
@@ -136,8 +136,8 @@ function MainMenu() {
                     <button className='text-2xl'>
                         <TiShoppingCart />
                     </button>
-                    <button className='px-2 w-20 py-1.5 ml-3 rounded-md bg-white text-[#426B69]'>Sign in</button>
-                    <Link href={"/admin"} className='ml-3 text-xl text-white'><RiAdminFill /></Link>
+                    {/* <button className='px-2 w-20 py-1.5 ml-3 rounded-md bg-white text-[#426B69]'>Sign in</button> */}
+                    {/* <Link href={"/admin"} className='ml-3 text-xl text-white'><RiAdminFill /></Link> */}
                 </div>
             </nav>
         </div>

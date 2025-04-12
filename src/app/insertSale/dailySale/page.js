@@ -151,7 +151,7 @@ export default function DailySales() {
 
 
     return (
-        <div className="text-center w-[70%] mt-20 mx-auto p-6 bg-white shadow-md rounded-lg">
+        <div className="text-center w-[98%] sm:w-[70%] mt-20 mx-auto sm:p-6 bg-white shadow-md rounded-lg">
             <Link className="text-[#426B69] text-left underline block" href={"/insertSale"}>Go Back</Link>
             <div className="w-full my-2   mx-2">
 
@@ -172,7 +172,7 @@ export default function DailySales() {
             {
                 salesData.length > 0 ?
                     <div ref={tableRef} className="overflow-x-auto">
-                        <h1 className="text-center font-semibold text-xl text-gray-600 mb-1">{date} Sales</h1>
+                        <h1 className="text-center font-semibold sm:text-xl text-gray-600 mb-1">{date} Sales</h1>
                         <div className="mb-2 text-right">
                             {/* <button
                                 onClick={handleDownloadPDF}
@@ -213,25 +213,25 @@ export default function DailySales() {
                                         // totalProfit.toFixed(2)
                                         return (
                                             <tr key={index} className="text-center hover:bg-gray-100 transition">
-                                                <td className="p-3 border">
+                                                <td className="p-3 border sm:text-[12px] text-[9px] ">
                                                     {
                                                         index + 1
                                                     }
                                                 </td>
-                                                <td className="p-3 border">
+                                                <td className="p-3 border sm:text-[12px] text-[9px] ">
                                                     {
                                                         date
                                                     }
                                                 </td>
-                                                <td className="p-3 border">{sale.itemName}</td>
-                                                <td className="p-3 border">{sale.kg}</td>
-                                                {/* <td className="p-3 border">{sale.unitprice}</td> */}
-                                                <td className="p-3 border">{sale.amount}</td>
-                                                <td className="p-3 border relative">{sale.profit}
+                                                <td className="p-3 border sm:text-[12px] text-[9px] ">{sale.itemName}</td>
+                                                <td className="p-3 border sm:text-[12px] text-[9px] ">{sale.kg}</td>
+                                                {/* <td className="p-3 border sm:text-[12px] text-[9px] ">{sale.unitprice}</td> */}
+                                                <td className="p-3 border sm:text-[12px] text-[9px] ">{sale.amount}</td>
+                                                <td className="p-3 border sm:text-[12px] text-[9px]  relative">{sale.profit}
                                                     {/* modal btn  */}
                                                     {
                                                         // role === "admin" &&
-                                                        <label for="my-modal-4" class="">
+                                                        <label htmlFor="my-modal-4" className="">
                                                             <FaRegEdit
                                                                 className='absolute right-0 top-0 text-yellow-600 cursor-pointer'></FaRegEdit>
                                                         </label>

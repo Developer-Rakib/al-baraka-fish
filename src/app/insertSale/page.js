@@ -23,7 +23,8 @@ export default function AddSales() {
             .then(response => setSalesData(response.data))
             .catch(error => console.error("Error fetching sales data:", error));
 
-        axios.get("https://admin.mzamanbd.com/fishStock")
+        // axios.get("https://admin.mzamanbd.com/fishStock")
+        axios.get("fishStock.json")
             .then(res => setfishStock(res.data))
             .catch(error => console.error("Error fetching sales data:", error));
     }, [salesData]);
@@ -559,9 +560,76 @@ export default function AddSales() {
 
 
         let date = moment(startDate).format('DD MMM yyyy');
-        const cost = fishStock.find(data => bookingData.itemName === data.itemName)
+        const currentStock = fishStock.find(data => bookingData.itemName === data.itemName)
+        const kg = parseFloat(bookingData.kg)
 
-        // console.log(bookingData.itemName);
+        function findBestVariation(weight) {
+            // Max weight for "UP" variations should be considered 1000 grams (1 kg)
+            const parsed = currentStock.variation.map(v => {
+                const [minStr, maxStr] = v.type.split(" ");
+                const min = parseFloat(minStr);
+                const max = maxStr === "UP" ? 1000 : parseFloat(maxStr); // 1000 grams for "UP"
+
+                return {
+                    ...v,
+                    min,
+                    max,
+                    range: max - min
+                };
+            });
+
+            // Filter variations that the weight fits into
+            const validMatches = parsed.filter(v => weight >= v.min && weight <= v.max);
+
+            // If no specific match is found, fall back to the lowest range ("1 UP")
+            if (validMatches.length === 0) {
+                const fallbackMatch = parsed.find(v => weight <= v.max);
+                if (fallbackMatch) {
+                    // console.log("Fallback Match:", fallbackMatch);
+                    return fallbackMatch;
+                }
+                console.log("No valid match found.");
+                return null;
+            }
+
+            // Sort by the tightest range to pick the best variation
+            validMatches.sort((a, b) => a.range - b.range);
+
+            const bestMatch = validMatches[0];
+            // console.log("✅ Best Match:", bestMatch);
+            return bestMatch;
+        }
+        // const item = {
+        //     itemName: "Koral",
+        //     variation: [
+        //         { type: "1 UP", buyPricePerKG: 18, sellPricePerKG: 24, peaceStockQty: 19 },
+        //         { type: "2 UP", buyPricePerKG: 19, sellPricePerKG: 25, peaceStockQty: 9 },
+        //         { type: "1.5 2", buyPricePerKG: 18.5, sellPricePerKG: 24, peaceStockQty: 11 },
+        //         { type: "3 UP", buyPricePerKG: 19.5, sellPricePerKG: 25, peaceStockQty: 6 }
+        //     ]
+        // };
+
+        // console.log(findBestVariation(kg).buyPricePerKG); // Fallback to "1 UP"
+
+
+
+
+        // console.log(currentStock);
+        // const currentFishType = currentStock.variation.map(cf => {
+        //     // console.log(cf.type.split(" ")[1]);
+        //     const kg = parseFloat(bookingData.kg)
+        //     const minNumber = parseFloat(cf.type.split(" ")[0]);
+        //     const maxNumber = parseFloat(cf.type.split(" ")[0]);
+        //     // if ( >= ) {
+
+        //     // }
+        //     // if (cf.type.split(" ")[1] === "UP") {
+        //     //     // console.log(cf.type.split(" ")[1]);
+
+        //     // }
+        // })
+
+        const buyPrice = currentStock.variation ? findBestVariation(kg).buyPricePerKG : currentStock.buyPricePerKG
 
 
         // const date = Date()
@@ -572,10 +640,10 @@ export default function AddSales() {
             kg: parseFloat(bookingData.kg),
             amount: parseFloat(bookingData.amount),
             unitprice: parseFloat((parseFloat(bookingData.amount) / parseFloat(bookingData.kg)).toFixed(2)),
-            profit: parseFloat((parseFloat(bookingData.amount) - (cost.buyPricePerKG * parseFloat(bookingData.kg))).toFixed(2)),
+            profit: parseFloat((parseFloat(bookingData.amount) - (buyPrice * parseFloat(bookingData.kg))).toFixed(2)),
             note: ""
         }
-        // console.log(finalData);
+        console.log(finalData);
         // console.log(finalData);
         axios.post(`https://admin.mzamanbd.com/sales`, finalData).then(data => {
             // console.log(data.data.success);
@@ -606,12 +674,12 @@ export default function AddSales() {
                     {/* <p  className="mt-1 text-sm leading-6 text-gray-600">Use a permanent address where you can receive mail.</p> */}
 
 
-                    <div className='flex  justify-center  flex-col sm:flex-row sm:justify-center items-end'>
+                    <div className='flex  justify-center  flex-col sm:flex-row sm:justify-center sm:items-end'>
 
 
                         <h2 className="leading-7 inline text-teal-700 mb-4 mr-3 text-xl">Insert Sale Here:</h2>
 
-                        <div className="w-full my-2 sm:w-[120px]  mx-2">
+                        <div className="w-full my-2 sm:w-[120px]  mx-3">
 
                             <DatePicker
                                 className='border-2 rounded-md w-32 text-center py-1.5 text-gray-700'
@@ -631,7 +699,7 @@ export default function AddSales() {
 
                         <div >
                             <div className='flex'>
-                                <div className="w-full my-2 sm:w-[140px]  mx-2">
+                                <div className="w-full my-2 sm:w-[140px]  sm:mx-2">
                                     <label htmlFor="itemName" className="block text-sm font-medium leading-6 text-gray-900">Fish Name</label>
                                     <div className="">
                                         <select id="itemName" name="itemName" autoComplete="item-name" className="bg-white block w-full rounded-md border-0 py-2 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -641,22 +709,19 @@ export default function AddSales() {
                                 </div>
                             </div>
 
-
-
-
                         </div>
 
 
 
 
-                        <div className="w-full my-2 sm:w-[120px]  mx-2">
+                        <div className="w-full my-2 sm:w-[120px]  sm:mx-2">
                             <label htmlFor="kg" className="block text-sm font-medium leading-6 text-gray-900">KG / QTY</label>
                             <div className="">
                                 <input required type="number" step="0.01" name="kg" id="kg" className="block w-full rounded-md border-0 text-center p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
                             </div>
                         </div>
 
-                        <div className="w-full my-2 sm:w-[120px]  mx-2">
+                        <div className="w-full my-2 sm:w-[120px]  sm:mx-2">
                             <label htmlFor="amount" className="block text-sm font-medium leading-6 text-gray-900">Amount</label>
                             <div className="">
                                 <input required type="number" step="0.01" name="amount" id="amount" autoComplete="address-level2" className="block w-full rounded-md border-0 text-center p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
