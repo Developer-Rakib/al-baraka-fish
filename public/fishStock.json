@@ -577,13 +577,6 @@
         "peaceStockQty": 24
     },
     {
-        "_id": "67fa9d4d4874d0a0866100c9",
-        "itemName": "Singri S. Packet",
-        "buyPricePerKG": 6.25,
-        "sellPricePerKG": 8,
-        "peaceStockQty": 10
-    },
-    {
         "_id": "67fa9d4d4874d0a0866100ca",
         "itemName": "Mola Packet",
         "buyPricePerKG": 4.79,
@@ -596,13 +589,6 @@
         "buyPricePerKG": 8,
         "sellPricePerKG": 12,
         "peaceStockQty": 10
-    },
-    {
-        "_id": "67fa9d4d4874d0a0866100cc",
-        "itemName": "Fish Cuting",
-        "buyPricePerKG": 0,
-        "sellPricePerKG": 20,
-        "peaceStockQty": 10000
     },
     {
         "_id": "67fa9d4d4874d0a0866100cd",
@@ -645,13 +631,6 @@
         "peaceStockQty": 10
     },
     {
-        "_id": "67fa9d4d4874d0a0866100d2",
-        "itemName": "Milk Fish",
-        "buyPricePerKG": 12.6,
-        "sellPricePerKG": 18,
-        "peaceStockQty": 8
-    },
-    {
         "_id": "67fa9d4d4874d0a0866100d3",
         "itemName": "Baila Barma Packet",
         "buyPricePerKG": 8.8,
@@ -687,6 +666,13 @@
         "peaceStockQty": 24
     },
     {
+        "_id": "67fa9d4d4874d0a0866100d2",
+        "itemName": "Milk Fish",
+        "buyPricePerKG": 12.6,
+        "sellPricePerKG": 18,
+        "peaceStockQty": 8
+    },
+    {
         "_id": "67fa9d4d4874d0a0866100d9",
         "itemName": "Bulti",
         "buyPricePerKG": 14.4,
@@ -699,6 +685,19 @@
         "buyPricePerKG": 8.6,
         "sellPricePerKG": 20,
         "peaceStockQty": 24
+    },
+    {
+        "itemName": "Cakra",
+        "buyPricePerKG": 16.5,
+        "sellPricePerKG": 23,
+        "peaceStockQty": 20
+    },
+    {
+        "_id": "67fa9d4d4874d0a0866100c9",
+        "itemName": "Singri S. Packet",
+        "buyPricePerKG": 6.25,
+        "sellPricePerKG": 8,
+        "peaceStockQty": 10
     },
     {
         "_id": "67fa9d4d4874d0a0866100db",
@@ -728,16 +727,10 @@
     },
     {
         "_id": "67fa9d4d4874d0a0866100d1",
-        "itemName": "Singri Packet Arbian",
+        "itemName": "Rubian",
         "buyPricePerKG": 39.5,
         "sellPricePerKG": 45,
         "peaceStockQty": 10
-    },
-    {
-        "itemName": "Cakra",
-        "buyPricePerKG": 16.5,
-        "sellPricePerKG": 23,
-        "peaceStockQty": 20
     },
     {
         "itemName": "Kaillara",
