@@ -102,6 +102,11 @@ export default function Inventory() {
                                                                 />
                                                             </div>
                                                             <div className="col-span-6 sm:col-span-2 ">
+                                                                <label htmlFor="variation" className="block text-sm font-medium text-gray-700">Variation</label>
+                                                                <input type={"text"} id="variation" name="variation" autoComplete="variation" className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                                />
+                                                            </div>
+                                                            <div className="col-span-6 sm:col-span-2 ">
                                                                 <label htmlFor="buyPricePerKG" className="block text-sm font-medium text-gray-700">Buy Price</label>
                                                                 <input type={"text"} id="buyPricePerKG" name="buyPricePerKG" autoComplete="buyPricePerKG" className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                                 />
@@ -156,14 +161,17 @@ export default function Inventory() {
                                                     Fish Name
                                                 </th>
                                                 <th scope="col" className="py-2 sm:text-[12px] text-[9px]  sm:py-3">
+                                                    Variation
+                                                </th>
+                                                <th scope="col" className="py-2 sm:text-[12px] text-[9px]  sm:py-3">
                                                     Buy Price
                                                 </th>
                                                 <th scope="col" className="py-2 sm:text-[12px] text-[9px] text-center sm:py-3">
                                                     Sell Price
                                                 </th>
-                                                <th scope="col" className="py-2 sm:text-[12px] text-[9px] text-center sm:py-3 ">
+                                                {/* <th scope="col" className="py-2 sm:text-[12px] text-[9px] text-center sm:py-3 ">
                                                     Stock QTY
-                                                </th>
+                                                </th> */}
                                                 <th scope="col" className="py-2 sm:text-[12px] text-[9px] text-center sm:py-3 ">
 
                                                 </th>

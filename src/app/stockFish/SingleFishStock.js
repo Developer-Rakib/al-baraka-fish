@@ -64,13 +64,13 @@ function SingleFishStock({ i, singleFish, setFishStock, fishStock }) {
             </td>
             <td className="py-2     text-[9px] sm:text-[13px]  sm:py-4">
 
-                {singleFish?.variation ?
+                {singleFish?.variation &&
 
                     singleFish?.variation.map((f, i) => {
                         return <p className='border-b' key={i}>{f.type}</p>
                     })
-                    :
-                    singleFish.itemName
+                    // :
+                    // singleFish.itemName
                 }
             </td>
 
@@ -98,6 +98,12 @@ function SingleFishStock({ i, singleFish, setFishStock, fishStock }) {
                 }
 
             </td>
+            {/* <td className="py-2   text-[7px] sm:text-[13px]   text-center sm:py-4">
+                {
+                    singleFish.peaceStockQty
+                }
+
+            </td> */}
             <td className="py-2 text-[7px] sm:text-[13px]   text-center sm:py-4">
                 <label onClick={() => setEditModal(true)} htmlFor="my-modal-4" className="">
                     <FaRegEdit

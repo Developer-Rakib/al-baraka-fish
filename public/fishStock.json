@@ -383,6 +383,12 @@
         "peaceStockQty": 10
     },
     {
+        "itemName": "Star Baim Loos",
+        "buyPricePerKG": 20,
+        "sellPricePerKG": 25,
+        "peaceStockQty": 10
+    },
+    {
         "_id": "67fa9d4d4874d0a0866100b3",
         "itemName": "Shoil",
         "buyPricePerKG": 20,
@@ -394,6 +400,13 @@
         "itemName": "Rup Chanda",
         "buyPricePerKG": 10,
         "sellPricePerKG": 16,
+        "peaceStockQty": 10
+    },
+    {
+        "_id": "67fa9d4d4874d0a0866100b4",
+        "itemName": "Rup Chanda White",
+        "buyPricePerKG": 16,
+        "sellPricePerKG": 18,
         "peaceStockQty": 10
     },
     {
@@ -510,9 +523,15 @@
     },
     {
         "_id": "67fa9d4d4874d0a0866100c5",
-        "itemName": "Shing Packet",
+        "itemName": "Shing loos Packet",
         "buyPricePerKG": 18,
         "sellPricePerKG": 22,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Shing loos Pakistani",
+        "buyPricePerKG": 17,
+        "sellPricePerKG": 21,
         "peaceStockQty": 10
     },
     {
@@ -531,10 +550,24 @@
     },
     {
         "_id": "67fa9d4d4874d0a0866100c8",
-        "itemName": "Kaski",
-        "buyPricePerKG": 3.54,
+        "itemName": "Kaski Small Tray",
+        "buyPricePerKG": 3.33,
         "sellPricePerKG": 6,
         "peaceStockQty": 10
+    },
+    {
+        "_id": "67fa9d4d4874d0a0866100c8",
+        "itemName": "Kaski Big Tray",
+        "buyPricePerKG": 5,
+        "sellPricePerKG": 8,
+        "peaceStockQty": 15
+    },
+    {
+        "_id": "67fa9d4d4874d0a0866100d6",
+        "itemName": "Kaski Blk Packet",
+        "buyPricePerKG": 6.45,
+        "sellPricePerKG": 10,
+        "peaceStockQty": 24
     },
     {
         "_id": "67fa9d4d4874d0a0866100c9",
@@ -579,6 +612,12 @@
         "peaceStockQty": 10
     },
     {
+        "itemName": "Taki Loos",
+        "buyPricePerKG": 12,
+        "sellPricePerKG": 16,
+        "peaceStockQty": 10
+    },
+    {
         "_id": "67fa9d4d4874d0a0866100cf",
         "itemName": "Beef",
         "buyPricePerKG": 17.77,
@@ -586,16 +625,15 @@
         "peaceStockQty": 10
     },
     {
+        "itemName": "Meat Pk",
+        "buyPricePerKG": 18,
+        "sellPricePerKG": 23,
+        "peaceStockQty": 20
+    },
+    {
         "_id": "67fa9d4d4874d0a0866100d0",
         "itemName": "Duck",
         "buyPricePerKG": 38.33,
-        "sellPricePerKG": 45,
-        "peaceStockQty": 10
-    },
-    {
-        "_id": "67fa9d4d4874d0a0866100d1",
-        "itemName": "Singri Packet Arbian",
-        "buyPricePerKG": 39.5,
         "sellPricePerKG": 45,
         "peaceStockQty": 10
     },
@@ -628,13 +666,6 @@
         "peaceStockQty": 25
     },
     {
-        "_id": "67fa9d4d4874d0a0866100d6",
-        "itemName": "Kaski Blk Packet",
-        "buyPricePerKG": 6.45,
-        "sellPricePerKG": 10,
-        "peaceStockQty": 24
-    },
-    {
         "_id": "67fa9d4d4874d0a0866100d7",
         "itemName": "Shing Blk",
         "buyPricePerKG": 13.33,
@@ -658,7 +689,7 @@
     {
         "_id": "67fa9d4d4874d0a0866100da",
         "itemName": "Play",
-        "buyPricePerKG": 14.4,
+        "buyPricePerKG": 8.6,
         "sellPricePerKG": 20,
         "peaceStockQty": 24
     },
@@ -675,5 +706,36 @@
         "buyPricePerKG": 22.5,
         "sellPricePerKG": 28,
         "peaceStockQty": 30
+    },
+    {
+        "itemName": "Singri Golda Tray",
+        "buyPricePerKG": 10,
+        "sellPricePerKG": 15,
+        "peaceStockQty": 30
+    },
+    {
+        "itemName": "Singri Dray",
+        "buyPricePerKG": 5,
+        "sellPricePerKG": 10,
+        "peaceStockQty": 20
+    },
+    {
+        "_id": "67fa9d4d4874d0a0866100d1",
+        "itemName": "Singri Packet Arbian",
+        "buyPricePerKG": 39.5,
+        "sellPricePerKG": 45,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Cakra",
+        "buyPricePerKG": 16.5,
+        "sellPricePerKG": 23,
+        "peaceStockQty": 20
+    },
+    {
+        "itemName": "Kaillara",
+        "buyPricePerKG": 21,
+        "sellPricePerKG": 25,
+        "peaceStockQty": 20
     }
 ]
