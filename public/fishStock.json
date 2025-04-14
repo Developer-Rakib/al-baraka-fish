@@ -424,6 +424,13 @@
         "peaceStockQty": 10
     },
     {
+        "_id": "67fa9d4d4874d0a0866100b6",
+        "itemName": "Tangra Big Packet",
+        "buyPricePerKG": 14.66,
+        "sellPricePerKG": 20,
+        "peaceStockQty": 10
+    },
+    {
         "_id": "67fa9d4d4874d0a0866100b7",
         "itemName": "Chicken Small",
         "buyPricePerKG": 6.5,
