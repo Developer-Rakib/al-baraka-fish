@@ -14,6 +14,7 @@ import Link from "next/link";
 export default function AddSales() {
     const [startDate, setStartDate] = useState(new Date());
     // const [qtyCount, setQtyCount] = useState(1);
+    const [currentFish, setCurrentFish] = useState()
     const [fishStock, setfishStock] = useState([])
     const [salesData, setSalesData] = useState([]);
 
@@ -23,11 +24,15 @@ export default function AddSales() {
             .then(response => setSalesData(response.data))
             .catch(error => console.error("Error fetching sales data:", error));
 
+    }, []);
+    // console.log(salesData);
+
+    useEffect(() => {
         // axios.get("https://admin.mzamanbd.com/fishStock")
         axios.get("fishStock.json")
             .then(res => setfishStock(res.data))
             .catch(error => console.error("Error fetching sales data:", error));
-    }, [salesData]);
+    }, []);
 
 
     function handleDelete(sale) {
@@ -72,15 +77,30 @@ export default function AddSales() {
 
 
     const fishNames = fishStock?.map(fishS => fishS.itemName);
-    const fishVariation = fishStock?.map(fishS => fishS.variation);
+    let fishNameInner = fishNames.map((itSt, i) => <option key={i}>{itSt}</option>,)
+
+
+
+    let fishVariationInner = currentFish?.variation?.map((itSt, i) => <option key={i}>{itSt?.type}</option>,) || null
+
+    // console.log(currentFish?.variation);
+    // console.log(fishVariationInner);
+
+
 
     // console.log(fishNames);
     // let qtyCount = 1;
 
     // let itemString = itemName.map(itSt => `<option>${itSt}</option>`,)
-    let fishNameInner = fishNames.map((itSt, i) => <option key={i}>{itSt}</option>,)
-    let fishVariationInner = fishNames.map((itSt, i) => <option key={i}>{itSt}</option>,)
 
+
+
+    function handleSelectFish(e) {
+        // console.log(e.target.value);
+        const currentFishFind = fishStock.find(fs => fs.itemName === e.target.value)
+        setCurrentFish(currentFishFind)
+
+    }
 
 
     function handleClear(e) {
@@ -115,6 +135,8 @@ export default function AddSales() {
             }
             bookingData = obj
         })
+
+        // console.log(bookingData.variation);
 
 
         let date = moment(startDate).format('DD MMM yyyy');
@@ -157,59 +179,42 @@ export default function AddSales() {
             // console.log("✅ Best Match:", bestMatch);
             return bestMatch;
         }
-        // const item = {
-        //     itemName: "Koral",
-        //     variation: [
-        //         { type: "1 UP", buyPricePerKG: 18, sellPricePerKG: 24, peaceStockQty: 19 },
-        //         { type: "2 UP", buyPricePerKG: 19, sellPricePerKG: 25, peaceStockQty: 9 },
-        //         { type: "1.5 2", buyPricePerKG: 18.5, sellPricePerKG: 24, peaceStockQty: 11 },
-        //         { type: "3 UP", buyPricePerKG: 19.5, sellPricePerKG: 25, peaceStockQty: 6 }
-        //     ]
-        // };
-
-        // console.log(findBestVariation(kg).buyPricePerKG); // Fallback to "1 UP"
 
 
 
+        const currentVariation = currentStock.variation ?
+            (
+                bookingData.variation === "Select" ?
+                    findBestVariation(kg)
+                    :
+                    currentStock.variation.find(cs => cs.type === bookingData.variation)
+            )
+            :
+            currentStock;
 
-        // console.log(currentStock);
-        // const currentFishType = currentStock.variation.map(cf => {
-        //     // console.log(cf.type.split(" ")[1]);
-        //     const kg = parseFloat(bookingData.kg)
-        //     const minNumber = parseFloat(cf.type.split(" ")[0]);
-        //     const maxNumber = parseFloat(cf.type.split(" ")[0]);
-        //     // if ( >= ) {
-
-        //     // }
-        //     // if (cf.type.split(" ")[1] === "UP") {
-        //     //     // console.log(cf.type.split(" ")[1]);
-
-        //     // }
-        // })
-
-        const buyPrice = currentStock.variation ? findBestVariation(kg).buyPricePerKG : currentStock.buyPricePerKG
+        // console.log(currentVariation);
 
 
-        // const date = Date()
 
         let finalData = {
             date: date,
-            itemName: bookingData.itemName,
+            itemName: currentVariation?.type ? `${bookingData.itemName} ${currentVariation?.type}` : bookingData.itemName,
             kg: parseFloat(bookingData.kg),
             amount: parseFloat(bookingData.amount),
             unitprice: parseFloat((parseFloat(bookingData.amount) / parseFloat(bookingData.kg)).toFixed(2)),
-            profit: parseFloat((parseFloat(bookingData.amount) - (buyPrice * parseFloat(bookingData.kg))).toFixed(2)),
+            profit: parseFloat((parseFloat(bookingData.amount) - (currentVariation.buyPricePerKG * parseFloat(bookingData.kg))).toFixed(2)),
             note: ""
         }
         console.log(finalData);
-        // console.log(finalData);
         axios.post(`https://admin.mzamanbd.com/sales`, finalData).then(data => {
             // console.log(data.data.success);
             // console.log(data.data);
             if (data.data.success) {
                 toast.success(`${data.data.message}`)
                 e.target.reset();
-                setSalesData(salesData)
+                setSalesData(prev => [...prev, { ...finalData, _id: data.data.insertedId || Date.now() }]);
+                console.log(data);
+                // hey buddy listen carefully ! when i post new sales, i want to load in my ui with my new sales
             }
             else {
                 Swal.fire({
@@ -260,7 +265,8 @@ export default function AddSales() {
                                 <div className="w-full my-2 sm:w-[140px]  sm:mx-2">
                                     <label htmlFor="itemName" className="block text-sm font-medium leading-6 text-gray-900">Fish Name</label>
                                     <div className="">
-                                        <select id="itemName" name="itemName" autoComplete="item-name" className="bg-white block w-full rounded-md border-0 py-2 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                        <select onChange={handleSelectFish} id="itemName" name="itemName" autoComplete="item-name" className="bg-white block w-full rounded-md border-0 py-2 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                            <option >Select</option>
                                             {fishNameInner}
                                         </select>
                                     </div>
@@ -268,6 +274,27 @@ export default function AddSales() {
                             </div>
 
                         </div>
+
+
+
+
+                        {
+                            fishVariationInner &&
+                            <div>
+                                <div className='flex'>
+                                    <div className="w-full my-2 sm:w-[140px]  sm:mx-2">
+                                        <label htmlFor="variation" className="block text-sm font-medium leading-6 text-gray-900">Variation</label>
+                                        <div className="">
+                                            <select id="variation" name="variation" autoComplete="item-name" className="bg-white block w-full rounded-md border-0 py-2 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                                                <option >Select</option>
+                                                {fishVariationInner}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
 
 
 
