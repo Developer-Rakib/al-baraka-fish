@@ -29,7 +29,7 @@ export default function AddSales() {
 
     useEffect(() => {
         // axios.get("https://admin.mzamanbd.com/fishStock")
-        axios.get("fishStock.json")
+        axios.get("https://admin.mzamanbd.com/fishStock")
             .then(res => setfishStock(res.data))
             .catch(error => console.error("Error fetching sales data:", error));
     }, []);

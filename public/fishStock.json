@@ -1,6 +1,5 @@
 [
     {
-        "_id": "67fe86ce4874d0a0866102ca",
         "itemName": "Rui",
         "variation": [
             {
@@ -29,7 +28,7 @@
             },
             {
                 "type": "4 UP",
-                "buyPricePerKG": 10,
+                "buyPricePerKG": 10.5,
                 "sellPricePerKG": 14,
                 "peaceStockQty": 15
             },
@@ -48,7 +47,6 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102cb",
         "itemName": "Katla",
         "variation": [
             {
@@ -96,7 +94,6 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102cc",
         "itemName": "Pangas",
         "variation": [
             {
@@ -162,7 +159,12 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102cd",
+        "itemName": "Pangas Packet",
+        "buyPricePerKG": 9,
+        "sellPricePerKG": 13,
+        "peaceStockQty": 10
+    },
+    {
         "itemName": "Mirka",
         "variation": [
             {
@@ -192,7 +194,6 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102ce",
         "itemName": "Koral",
         "variation": [
             {
@@ -222,7 +223,6 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102cf",
         "itemName": "Hilsha",
         "variation": [
             {
@@ -264,21 +264,24 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102d0",
+        "itemName": "Hilsha Jhatka",
+        "buyPricePerKG": 17,
+        "sellPricePerKG": 20,
+        "peaceStockQty": 10
+    },
+    {
         "itemName": "Hilsha Nona",
         "buyPricePerKG": 16,
         "sellPricePerKG": 22,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102d1",
         "itemName": "Hilsha Egg",
         "buyPricePerKG": 25.6,
         "sellPricePerKG": 32,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102d2",
         "itemName": "Shor Puti",
         "variation": [
             {
@@ -302,21 +305,18 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102d3",
         "itemName": "Shor Puti Packet",
         "buyPricePerKG": 9,
         "sellPricePerKG": 12,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102d4",
         "itemName": "D-Puti Packet",
         "buyPricePerKG": 5.75,
         "sellPricePerKG": 8,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102d5",
         "itemName": "Boal",
         "variation": [
             {
@@ -334,7 +334,6 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102d6",
         "itemName": "Carfu",
         "variation": [
             {
@@ -364,7 +363,6 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102d7",
         "itemName": "Aiel",
         "variation": [
             {
@@ -376,374 +374,327 @@
         ]
     },
     {
-        "_id": "67fe86ce4874d0a0866102d8",
         "itemName": "Star Baim",
         "buyPricePerKG": 16,
         "sellPricePerKG": 20,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102d9",
         "itemName": "Star Baim Loos",
         "buyPricePerKG": 20,
         "sellPricePerKG": 25,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102da",
         "itemName": "Shoil",
         "buyPricePerKG": 20,
         "sellPricePerKG": 24,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102db",
         "itemName": "Rup Chanda",
         "buyPricePerKG": 10,
         "sellPricePerKG": 16,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102dc",
         "itemName": "Rup Chanda White",
         "buyPricePerKG": 16,
         "sellPricePerKG": 18,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102dd",
         "itemName": "Mix Packet",
         "buyPricePerKG": 6.45,
         "sellPricePerKG": 11,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102de",
         "itemName": "Tangra Packet",
         "buyPricePerKG": 9.2,
         "sellPricePerKG": 12,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102df",
         "itemName": "Tangra Big Packet",
         "buyPricePerKG": 14.66,
         "sellPricePerKG": 20,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102e0",
         "itemName": "Chicken Small",
         "buyPricePerKG": 6.5,
         "sellPricePerKG": 10,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102e1",
         "itemName": "Chicken Big",
         "buyPricePerKG": 20,
         "sellPricePerKG": 30,
         "peaceStockQty": 42
     },
     {
-        "_id": "67fe86ce4874d0a0866102e2",
         "itemName": "Mola Dry",
         "buyPricePerKG": 3.4,
         "sellPricePerKG": 6,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102e3",
         "itemName": "Suri Dry",
         "buyPricePerKG": 10.5,
         "sellPricePerKG": 15,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102e4",
         "itemName": "Sefa Dry",
         "buyPricePerKG": 5.6,
         "sellPricePerKG": 10,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102e5",
         "itemName": "Telapiya",
         "buyPricePerKG": 13,
         "sellPricePerKG": 15,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102e6",
         "itemName": "Baim Big",
         "buyPricePerKG": 30,
         "sellPricePerKG": 34,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102e7",
         "itemName": "Baim Small",
         "buyPricePerKG": 19,
         "sellPricePerKG": 24,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102e8",
         "itemName": "Pabda Packet",
         "buyPricePerKG": 22,
         "sellPricePerKG": 28,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102e9",
         "itemName": "Loitta Packet",
         "buyPricePerKG": 8,
         "sellPricePerKG": 12,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102ea",
         "itemName": "Loitta Dry",
         "buyPricePerKG": 5.4,
         "sellPricePerKG": 8,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102eb",
         "itemName": "Buti Packet",
         "buyPricePerKG": 9.16,
         "sellPricePerKG": 12,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102ec",
         "itemName": "Capila Packet",
         "buyPricePerKG": 5,
         "sellPricePerKG": 8,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102ed",
         "itemName": "Kajuli Packet",
         "buyPricePerKG": 10,
         "sellPricePerKG": 13,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102ee",
         "itemName": "Shing loos Packet",
         "buyPricePerKG": 18,
         "sellPricePerKG": 22,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102ef",
         "itemName": "Shing loos Pakistani",
         "buyPricePerKG": 17,
         "sellPricePerKG": 21,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102f0",
         "itemName": "Poa Packet",
         "buyPricePerKG": 9,
         "sellPricePerKG": 13,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102f1",
         "itemName": "Koi Packet",
         "buyPricePerKG": 15.5,
         "sellPricePerKG": 17,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102f2",
         "itemName": "Kaski Small Tray",
         "buyPricePerKG": 3.33,
         "sellPricePerKG": 6,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102f3",
         "itemName": "Kaski Big Tray",
         "buyPricePerKG": 5,
         "sellPricePerKG": 8,
         "peaceStockQty": 15
     },
     {
-        "_id": "67fe86ce4874d0a0866102f4",
         "itemName": "Kaski Blk Packet",
         "buyPricePerKG": 6.45,
         "sellPricePerKG": 10,
         "peaceStockQty": 24
     },
     {
-        "_id": "67fe86ce4874d0a0866102f5",
         "itemName": "Mola Packet",
         "buyPricePerKG": 4.79,
         "sellPricePerKG": 8,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102f6",
         "itemName": "Nola Packet",
         "buyPricePerKG": 8,
         "sellPricePerKG": 12,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102f7",
         "itemName": "Rui Egg Packet",
         "buyPricePerKG": 0,
         "sellPricePerKG": 0,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102f8",
         "itemName": "Taki Packet",
         "buyPricePerKG": 9.33,
         "sellPricePerKG": 12,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102f9",
         "itemName": "Taki Loos",
         "buyPricePerKG": 12,
         "sellPricePerKG": 16,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102fa",
         "itemName": "Beef",
         "buyPricePerKG": 17.77,
         "sellPricePerKG": 24,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102fb",
         "itemName": "Meat Pk",
         "buyPricePerKG": 18,
         "sellPricePerKG": 23,
         "peaceStockQty": 20
     },
     {
-        "_id": "67fe86ce4874d0a0866102fc",
         "itemName": "Duck",
         "buyPricePerKG": 38.33,
         "sellPricePerKG": 45,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a0866102fd",
         "itemName": "Baila Barma Packet",
         "buyPricePerKG": 8.8,
         "sellPricePerKG": 14,
         "peaceStockQty": 25
     },
     {
-        "_id": "67fe86ce4874d0a0866102fe",
         "itemName": "Baila BD Packet",
         "buyPricePerKG": 14.66,
         "sellPricePerKG": 18,
         "peaceStockQty": 15
     },
     {
-        "_id": "67fe86ce4874d0a0866102ff",
         "itemName": "Pabda Blk Packet",
         "buyPricePerKG": 7.5,
         "sellPricePerKG": 14,
         "peaceStockQty": 25
     },
     {
-        "_id": "67fe86ce4874d0a086610300",
         "itemName": "Shing Blk",
         "buyPricePerKG": 13.33,
         "sellPricePerKG": 20,
         "peaceStockQty": 24
     },
     {
-        "_id": "67fe86ce4874d0a086610301",
         "itemName": "Bata Loos Packet",
         "buyPricePerKG": 11,
         "sellPricePerKG": 15,
         "peaceStockQty": 24
     },
     {
-        "_id": "67fe86ce4874d0a086610302",
         "itemName": "Milk Fish",
         "buyPricePerKG": 12.6,
         "sellPricePerKG": 18,
         "peaceStockQty": 8
     },
     {
-        "_id": "67fe86ce4874d0a086610303",
         "itemName": "Bulti",
         "buyPricePerKG": 14.4,
         "sellPricePerKG": 20,
         "peaceStockQty": 24
     },
     {
-        "_id": "67fe86ce4874d0a086610304",
         "itemName": "Play",
         "buyPricePerKG": 8.6,
         "sellPricePerKG": 20,
         "peaceStockQty": 24
     },
     {
-        "_id": "67fe86ce4874d0a086610305",
         "itemName": "Cakra",
         "buyPricePerKG": 16.5,
         "sellPricePerKG": 23,
         "peaceStockQty": 20
     },
     {
-        "_id": "67fe86ce4874d0a086610306",
         "itemName": "Singri S. Packet",
         "buyPricePerKG": 6.25,
         "sellPricePerKG": 8,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a086610307",
         "itemName": "Singri Big",
         "buyPricePerKG": 40,
         "sellPricePerKG": 45,
         "peaceStockQty": 24
     },
     {
-        "_id": "67fe86ce4874d0a086610308",
         "itemName": "Singri Small",
         "buyPricePerKG": 22.5,
         "sellPricePerKG": 28,
         "peaceStockQty": 30
     },
     {
-        "_id": "67fe86ce4874d0a086610309",
         "itemName": "Singri Golda Tray",
         "buyPricePerKG": 10,
         "sellPricePerKG": 15,
         "peaceStockQty": 30
     },
     {
-        "_id": "67fe86ce4874d0a08661030a",
         "itemName": "Singri Dray",
         "buyPricePerKG": 5,
         "sellPricePerKG": 10,
         "peaceStockQty": 20
     },
     {
-        "_id": "67fe86ce4874d0a08661030b",
         "itemName": "Rubian",
         "buyPricePerKG": 39.5,
         "sellPricePerKG": 45,
         "peaceStockQty": 10
     },
     {
-        "_id": "67fe86ce4874d0a08661030c",
         "itemName": "Kaillara",
         "buyPricePerKG": 21,
         "sellPricePerKG": 25,
+        "peaceStockQty": 20
+    },
+    {
+        "itemName": "citol",
+        "buyPricePerKG": 13.5,
+        "sellPricePerKG": 20,
         "peaceStockQty": 20
     }
 ]

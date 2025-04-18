@@ -14,7 +14,7 @@ export default function Inventory() {
 
 
     useEffect(() => {
-        axios.get(`fishStock.json`) // Replace with your API URL
+        axios.get(`https://admin.mzamanbd.com/fishStock`) // Replace with your API URL
             .then(response => setFishStock(response.data))
             .catch(error => console.error("Error fetching sales data:", error));
 
