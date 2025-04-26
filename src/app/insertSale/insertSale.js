@@ -12,6 +12,9 @@ import * as XLSX from 'xlsx';
 
 export default function SalesTable({ salesData, handleDelete }) {
     const today = moment().format('DD MMM yyyy');
+    const [isModalOpen, setModalOpen] = useState(false);
+
+    const toggleModal = () => setModalOpen(!isModalOpen);
     let totalSales = 0;
     let totalKG = 0;
     let totalProfit = 0;
@@ -76,6 +79,48 @@ export default function SalesTable({ salesData, handleDelete }) {
         //     })
     }
 
+    function handleInfoSave(e) {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const formatedData = Array.from(formData.entries())
+        // console.log(formData);
+        let stockData = {}
+        formatedData.map((data) => {
+            let obj = {
+                ...stockData,
+                [data[0]]: data[1],
+            }
+            stockData = obj
+        })
+
+        // console.log(sellerName);
+
+        let editedData = {
+            itemName: stockData.itemName,
+            buyPricePerKG: parseFloat(stockData.buyPricePerKG),
+            sellPricePerKG: parseFloat(stockData.sellPricePerKG),
+            peaceStockQty: parseFloat(stockData.peaceStockQty),
+        }
+
+        console.log(editedData);
+        // toast.success("Entry updated")
+        axios.post(`https://admin.mzamanbd.com/fishStock/create`, editedData)
+            .then(data => {
+                // console.log(data.data);
+                if (data.data.success) {
+                    toast.success("Added fish in the stock")
+                    toggleModal()
+                    // document.getElementById('my-modal-4').checked = false;
+                    // setFishStock(fishStock)
+                    // setEditModal(false)
+                }
+                else {
+                    toast.error("Something is wrong, please try again")
+                }
+            })
+    }
+
 
     return (
         <div className="w-[98%] sm:max-w-4xl mx-auto sm:p-6 bg-white shadow-md rounded-lg">
@@ -137,15 +182,78 @@ export default function SalesTable({ salesData, handleDelete }) {
                                         <td className="p-3 border sm:text-[12px] text-[9px] ">{sale.amount}</td>
                                         <td className="p-3 border sm:text-[12px] text-[9px]  relative">{sale.profit}
                                             {/* modal btn  */}
-                                            {
-                                                // role === "admin" &&
-                                                <label htmlFor="my-modal-4" className="">
-                                                    <FaRegEdit
-                                                        className='absolute right-0 top-0 text-yellow-600 cursor-pointer'></FaRegEdit>
-                                                </label>
-                                            }
+                                            {/* // role === "admin" && */}
+                                            <label htmlFor="my-modal-4" className="" onClick={toggleModal}>
+                                                <FaRegEdit
+                                                    className='absolute right-0 top-0 text-yellow-600 cursor-pointer'></FaRegEdit>
+                                            </label>
+
+
 
                                             {/* modal  */}
+
+                                            {isModalOpen && (
+                                                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+                                                    <div className="modal modal-open">
+                                                        <div className="modal-box">
+                                                            <form onSubmit={handleInfoSave} className='text-center'>
+                                                                <div className="shadow  overflow-hidden sm:rounded-md">
+                                                                    <div className="px-4 py-4 bg-gray-50 sm:px-6">
+                                                                        <h3 className="text-xl.
+                                                         leading-6 font-medium text-gray-900">Insert Fish Information</h3>
+                                                                    </div>
+                                                                    <div className="px-4 py-5 bg-white sm:p-6">
+                                                                        <div className="flex">
+
+                                                                            <div className="col-span-6 w-32 mx-2cd   sm:col-span-2">
+                                                                                <label htmlFor="itemName" className="block text-sm font-medium text-gray-700">Item Name</label>
+                                                                                <input id="itemName" name="itemName" defaultValue={sale.itemName}
+                                                                                    type="text" autoComplete="country-name" className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+
+                                                                                />
+                                                                            </div>
+                                                                            <div className="col-span-6 w-32 mx-2cd   sm:col-span-2 ">
+                                                                                <label htmlFor="qty" className="block text-sm font-medium text-gray-700">Qty</label>
+                                                                                <input type={"text"} id="qty" name="qty" autoComplete="qty" defaultValue={sale.kg} className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                                                />
+                                                                            </div>
+                                                                            <div className="col-span-6 w-32 mx-2cd   sm:col-span-2 ">
+                                                                                <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
+                                                                                <input type={"text"} id="amount" name="amount" autoComplete="amount" defaultValue={sale.amount} className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                                                />
+                                                                            </div>
+                                                                            <div className="col-span-6 w-32 mx-2cd   sm:col-span-2 ">
+                                                                                <label htmlFor="profit" className="block text-sm font-medium text-gray-700">Profit</label>
+                                                                                <input type={"text"} id="profit" name="profit" autoComplete="profit" defaultValue={sale.profit} className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                                                />
+                                                                            </div>
+
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+                                                                        <button
+                                                                            type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+
+                                                            {/* Modal actions */}
+                                                            <div className="modal-action">
+                                                                <button className="btn" onClick={toggleModal}>
+                                                                    Close
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+
+
+
+
                                             {
                                                 // editModal &&
                                                 // <EditEntryModal

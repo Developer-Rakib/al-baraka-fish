@@ -16,7 +16,7 @@
             },
             {
                 "type": "2 UP",
-                "buyPricePerKG": 9,
+                "buyPricePerKG": 9.75,
                 "sellPricePerKG": 13,
                 "peaceStockQty": 20
             },
@@ -34,7 +34,7 @@
             },
             {
                 "type": "5 UP",
-                "buyPricePerKG": 11.5,
+                "buyPricePerKG": 11.23,
                 "sellPricePerKG": 15,
                 "peaceStockQty": 10
             },
@@ -297,7 +297,7 @@
                 "peaceStockQty": 10
             },
             {
-                "type": "1 UP",
+                "type": "1.2 UP",
                 "buyPricePerKG": 12,
                 "sellPricePerKG": 16,
                 "peaceStockQty": 10
@@ -332,6 +332,12 @@
                 "peaceStockQty": 11
             }
         ]
+    },
+    {
+        "itemName": "Boal Egg",
+        "buyPricePerKG": 16,
+        "sellPricePerKG": 20,
+        "peaceStockQty": 10
     },
     {
         "itemName": "Carfu",
@@ -476,6 +482,12 @@
         "peaceStockQty": 10
     },
     {
+        "itemName": "Pabda Blk Packet",
+        "buyPricePerKG": 7.5,
+        "sellPricePerKG": 14,
+        "peaceStockQty": 25
+    },
+    {
         "itemName": "Loitta Packet",
         "buyPricePerKG": 8,
         "sellPricePerKG": 12,
@@ -516,6 +528,12 @@
         "buyPricePerKG": 17,
         "sellPricePerKG": 21,
         "peaceStockQty": 10
+    },
+    {
+        "itemName": "Shing Blk",
+        "buyPricePerKG": 13.33,
+        "sellPricePerKG": 20,
+        "peaceStockQty": 24
     },
     {
         "itemName": "Poa Packet",
@@ -584,6 +602,12 @@
         "peaceStockQty": 10
     },
     {
+        "itemName": "Beef Blc",
+        "buyPricePerKG": 16.25,
+        "sellPricePerKG": 24,
+        "peaceStockQty": 10
+    },
+    {
         "itemName": "Meat Pk",
         "buyPricePerKG": 18,
         "sellPricePerKG": 23,
@@ -606,18 +630,6 @@
         "buyPricePerKG": 14.66,
         "sellPricePerKG": 18,
         "peaceStockQty": 15
-    },
-    {
-        "itemName": "Pabda Blk Packet",
-        "buyPricePerKG": 7.5,
-        "sellPricePerKG": 14,
-        "peaceStockQty": 25
-    },
-    {
-        "itemName": "Shing Blk",
-        "buyPricePerKG": 13.33,
-        "sellPricePerKG": 20,
-        "peaceStockQty": 24
     },
     {
         "itemName": "Bata Loos Packet",
@@ -668,13 +680,19 @@
         "peaceStockQty": 30
     },
     {
+        "itemName": "Singri S. Red",
+        "buyPricePerKG": 18,
+        "sellPricePerKG": 25,
+        "peaceStockQty": 30
+    },
+    {
         "itemName": "Singri Golda Tray",
         "buyPricePerKG": 10,
         "sellPricePerKG": 15,
         "peaceStockQty": 30
     },
     {
-        "itemName": "Singri Dray",
+        "itemName": "Singri Dry",
         "buyPricePerKG": 5,
         "sellPricePerKG": 10,
         "peaceStockQty": 20
@@ -692,9 +710,69 @@
         "peaceStockQty": 20
     },
     {
-        "itemName": "citol",
+        "itemName": "Citol",
         "buyPricePerKG": 13.5,
         "sellPricePerKG": 20,
         "peaceStockQty": 20
+    },
+    {
+        "itemName": "Kanla",
+        "buyPricePerKG": 11,
+        "sellPricePerKG": 16,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Sherry",
+        "buyPricePerKG": 18,
+        "sellPricePerKG": 25,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Tuna",
+        "buyPricePerKG": 10,
+        "sellPricePerKG": 20,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Andek",
+        "buyPricePerKG": 16,
+        "sellPricePerKG": 25,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Salmon",
+        "buyPricePerKG": 55,
+        "sellPricePerKG": 70,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Hamour Big",
+        "buyPricePerKG": 37,
+        "sellPricePerKG": 45,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Hamour Small",
+        "buyPricePerKG": 25,
+        "sellPricePerKG": 35,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Supreme",
+        "buyPricePerKG": 40,
+        "sellPricePerKG": 50,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Muhjan",
+        "buyPricePerKG": 14,
+        "sellPricePerKG": 25,
+        "peaceStockQty": 10
+    },
+    {
+        "itemName": "Srimp Fresh",
+        "buyPricePerKG": 30,
+        "sellPricePerKG": 45,
+        "peaceStockQty": 10
     }
 ]

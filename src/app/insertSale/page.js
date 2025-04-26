@@ -205,7 +205,7 @@ export default function AddSales() {
             profit: parseFloat((parseFloat(bookingData.amount) - (currentVariation.buyPricePerKG * parseFloat(bookingData.kg))).toFixed(2)),
             note: ""
         }
-        console.log(finalData);
+        // console.log(finalData);
         axios.post(`https://admin.mzamanbd.com/sales`, finalData).then(data => {
             // console.log(data.data.success);
             // console.log(data.data);
@@ -213,7 +213,7 @@ export default function AddSales() {
                 toast.success(`${data.data.message}`)
                 e.target.reset();
                 setSalesData(prev => [...prev, { ...finalData, _id: data.data.insertedId || Date.now() }]);
-                console.log(data);
+                // console.log(data.data.insertedId);
                 // hey buddy listen carefully ! when i post new sales, i want to load in my ui with my new sales
             }
             else {
