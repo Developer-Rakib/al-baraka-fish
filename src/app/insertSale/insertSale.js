@@ -9,9 +9,12 @@ import { useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import * as XLSX from 'xlsx';
+import toast from "react-hot-toast";
+import SingelSaleTable from "./SingelSaleTable";
 
-export default function SalesTable({ salesData, handleDelete }) {
+export default function SalesTable({ salesData, setSalesData, handleDelete }) {
     const today = moment().format('DD MMM yyyy');
+
     const [isModalOpen, setModalOpen] = useState(false);
 
     const toggleModal = () => setModalOpen(!isModalOpen);
@@ -21,6 +24,8 @@ export default function SalesTable({ salesData, handleDelete }) {
 
 
     const tableRef = useRef();
+
+
     const handleDownloadPDF = async () => {
         const element = tableRef.current;
 
@@ -79,7 +84,7 @@ export default function SalesTable({ salesData, handleDelete }) {
         //     })
     }
 
-    function handleInfoSave(e) {
+    function handleInfoSave(e, sale) {
         e.preventDefault();
 
         const formData = new FormData(e.target);
@@ -94,23 +99,37 @@ export default function SalesTable({ salesData, handleDelete }) {
             stockData = obj
         })
 
-        // console.log(sellerName);
+        // console.log(stockData);
+        // date: date,
+        // itemName: currentVariation?.type ? `${bookingData.itemName} ${currentVariation?.type}` : bookingData.itemName,
+        // kg: parseFloat(bookingData.kg),
+        // amount: parseFloat(bookingData.amount),
+        // unitprice: parseFloat((parseFloat(bookingData.amount) / parseFloat(bookingData.kg)).toFixed(2)),
+        // profit: parseFloat((parseFloat(bookingData.amount) - (currentVariation.buyPricePerKG * parseFloat(bookingData.kg))).toFixed(2)),
+        // note: ""
 
         let editedData = {
+            date: sale.date,
             itemName: stockData.itemName,
-            buyPricePerKG: parseFloat(stockData.buyPricePerKG),
-            sellPricePerKG: parseFloat(stockData.sellPricePerKG),
-            peaceStockQty: parseFloat(stockData.peaceStockQty),
+            kg: parseFloat(stockData.kg),
+            amount: parseFloat(stockData.amount),
+            unitprice: parseFloat((parseFloat(stockData.amount) / parseFloat(stockData.kg)).toFixed(2)),
+            profit: parseFloat(stockData.profit),
+            note: sale.note
         }
 
-        console.log(editedData);
+        // console.log(editedData);
         // toast.success("Entry updated")
-        axios.post(`https://admin.mzamanbd.com/fishStock/create`, editedData)
+        axios.put(`https://admin.mzamanbd.com/sale/update/${sale._id}`, editedData)
             .then(data => {
                 // console.log(data.data);
-                if (data.data.success) {
-                    toast.success("Added fish in the stock")
+                if (data.data.modifiedCount > 0) {
+                    toast.success(`${editedData.itemName} is successfully updated`)
+                    setSalesData(prev =>
+                        prev.map(item => item._id === sale._id ? { ...editedData, _id: sale._id } : item)
+                    );
                     toggleModal()
+
                     // document.getElementById('my-modal-4').checked = false;
                     // setFishStock(fishStock)
                     // setEditModal(false)
@@ -159,119 +178,20 @@ export default function SalesTable({ salesData, handleDelete }) {
                     <tbody>
                         {salesData.length > 0 ? (
                             salesData.map((sale, index) => {
-                                const date = moment(sale.date).format("DD MMM YY");
                                 totalSales = totalSales + sale.amount;
                                 totalKG = totalKG + sale.kg;
                                 totalProfit = totalProfit + sale.profit;
-                                // totalProfit.toFixed(2)
-                                return (
-                                    <tr key={index} className="text-center hover:bg-gray-100 transition">
-                                        <td className="p-3 border sm:text-[12px] text-[9px] ">
-                                            {
-                                                index + 1
-                                            }
-                                        </td>
-                                        <td className="p-3 border sm:text-[12px] text-[9px] ">
-                                            {
-                                                date
-                                            }
-                                        </td>
-                                        <td className="p-3 border sm:text-[12px] text-[9px] ">{sale.itemName}</td>
-                                        <td className="p-3 border sm:text-[12px] text-[9px] ">{sale.kg}</td>
-                                        {/* <td className="p-3 border sm:text-[12px] text-[9px] ">{sale.unitprice}</td> */}
-                                        <td className="p-3 border sm:text-[12px] text-[9px] ">{sale.amount}</td>
-                                        <td className="p-3 border sm:text-[12px] text-[9px]  relative">{sale.profit}
-                                            {/* modal btn  */}
-                                            {/* // role === "admin" && */}
-                                            <label htmlFor="my-modal-4" className="" onClick={toggleModal}>
-                                                <FaRegEdit
-                                                    className='absolute right-0 top-0 text-yellow-600 cursor-pointer'></FaRegEdit>
-                                            </label>
 
-
-
-                                            {/* modal  */}
-
-                                            {isModalOpen && (
-                                                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-                                                    <div className="modal modal-open">
-                                                        <div className="modal-box">
-                                                            <form onSubmit={handleInfoSave} className='text-center'>
-                                                                <div className="shadow  overflow-hidden sm:rounded-md">
-                                                                    <div className="px-4 py-4 bg-gray-50 sm:px-6">
-                                                                        <h3 className="text-xl.
-                                                         leading-6 font-medium text-gray-900">Insert Fish Information</h3>
-                                                                    </div>
-                                                                    <div className="px-4 py-5 bg-white sm:p-6">
-                                                                        <div className="flex">
-
-                                                                            <div className="col-span-6 w-32 mx-2cd   sm:col-span-2">
-                                                                                <label htmlFor="itemName" className="block text-sm font-medium text-gray-700">Item Name</label>
-                                                                                <input id="itemName" name="itemName" defaultValue={sale.itemName}
-                                                                                    type="text" autoComplete="country-name" className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-
-                                                                                />
-                                                                            </div>
-                                                                            <div className="col-span-6 w-32 mx-2cd   sm:col-span-2 ">
-                                                                                <label htmlFor="qty" className="block text-sm font-medium text-gray-700">Qty</label>
-                                                                                <input type={"text"} id="qty" name="qty" autoComplete="qty" defaultValue={sale.kg} className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="col-span-6 w-32 mx-2cd   sm:col-span-2 ">
-                                                                                <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
-                                                                                <input type={"text"} id="amount" name="amount" autoComplete="amount" defaultValue={sale.amount} className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                                                />
-                                                                            </div>
-                                                                            <div className="col-span-6 w-32 mx-2cd   sm:col-span-2 ">
-                                                                                <label htmlFor="profit" className="block text-sm font-medium text-gray-700">Profit</label>
-                                                                                <input type={"text"} id="profit" name="profit" autoComplete="profit" defaultValue={sale.profit} className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                                                />
-                                                                            </div>
-
-
-
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-                                                                        <button
-                                                                            type="submit" className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-
-                                                            {/* Modal actions */}
-                                                            <div className="modal-action">
-                                                                <button className="btn" onClick={toggleModal}>
-                                                                    Close
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            )}
-
-
-
-
-                                            {
-                                                // editModal &&
-                                                // <EditEntryModal
-                                                //     order={singleEntry}
-                                                //     setEditModal={setEditModal}
-                                                //     setOrder={setSingleEntry}
-                                                // />
-                                            }
-                                            {
-                                                // role === 'admin' &&
-                                                <span onClick={() => handleDelete(sale)} className='cursor-pointer'>
-                                                    <RiDeleteBack2Line className='text-red-600 absolute text-[10px] sm:text-[15px] sm:top-6 bottom-0  right-0' />
-                                                </span>
-                                            }
-                                        </td>
-                                    </tr>
-                                )
-                            })
+                                return <SingelSaleTable
+                                    key={index}
+                                    sale={sale}
+                                    index={index}
+                                    handleInfoSave={handleInfoSave}
+                                    toggleModal={toggleModal}
+                                    isModalOpen={isModalOpen}
+                                ></SingelSaleTable>
+                            }
+                            )
                         ) : (
                             <tr>
                                 <td colSpan="4" className="text-center p-4 text-gray-500">No sales data available</td>

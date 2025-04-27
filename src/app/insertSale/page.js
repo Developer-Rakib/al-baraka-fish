@@ -19,12 +19,12 @@ export default function AddSales() {
     const [salesData, setSalesData] = useState([]);
 
     useEffect(() => {
-        const today = moment().format('DD MMM yyyy');
-        axios.get(`https://admin.mzamanbd.com/sales/${today}`) // Replace with your API URL
+        const date = moment(startDate).format('DD MMM yyyy');
+        axios.get(`https://admin.mzamanbd.com/sales/${date}`) // Replace with your API URL
             .then(response => setSalesData(response.data))
             .catch(error => console.error("Error fetching sales data:", error));
 
-    }, []);
+    }, [startDate]);
     // console.log(salesData);
 
     useEffect(() => {
@@ -348,6 +348,7 @@ export default function AddSales() {
 
             <SalesTable
                 salesData={salesData}
+                setSalesData={setSalesData}
                 handleDelete={handleDelete}
             ></SalesTable>
         </div>
