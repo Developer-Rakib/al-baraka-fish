@@ -15,9 +15,13 @@ import SingelSaleTable from "./SingelSaleTable";
 export default function SalesTable({ salesData, setSalesData, handleDelete }) {
     const today = moment().format('DD MMM yyyy');
 
-    const [isModalOpen, setModalOpen] = useState(false);
+    const [openModalId, setOpenModalId] = useState(null);
 
-    const toggleModal = () => setModalOpen(!isModalOpen);
+    const openModal = (id) => setOpenModalId(id);
+    const closeModal = () => setOpenModalId(null);
+    // console.log(openModal);
+
+
     let totalSales = 0;
     let totalKG = 0;
     let totalProfit = 0;
@@ -128,7 +132,7 @@ export default function SalesTable({ salesData, setSalesData, handleDelete }) {
                     setSalesData(prev =>
                         prev.map(item => item._id === sale._id ? { ...editedData, _id: sale._id } : item)
                     );
-                    toggleModal()
+                    closeModal()
 
                     // document.getElementById('my-modal-4').checked = false;
                     // setFishStock(fishStock)
@@ -187,9 +191,12 @@ export default function SalesTable({ salesData, setSalesData, handleDelete }) {
                                     sale={sale}
                                     index={index}
                                     handleInfoSave={handleInfoSave}
-                                    toggleModal={toggleModal}
-                                    isModalOpen={isModalOpen}
-                                ></SingelSaleTable>
+                                    openModalId={openModalId}
+                                    openModal={openModal}
+                                    closeModal={closeModal}
+                                    handleDelete={handleDelete}
+                                />
+
                             }
                             )
                         ) : (

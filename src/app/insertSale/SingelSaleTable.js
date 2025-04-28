@@ -3,9 +3,12 @@ import React from 'react'
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBack2Line } from 'react-icons/ri';
 
-function SingelSaleTable({ sale, index, handleInfoSave, toggleModal, isModalOpen }) {
+function SingelSaleTable({ sale, index, handleInfoSave, openModalId, openModal, closeModal, handleDelete }) {
+
+
     // console.log(sale);
     const date = moment(sale.date).format("DD MMM YY");
+    // console.log(openModalId, sale._id);
 
     return (
         <tr key={index} className="text-center hover:bg-gray-100 transition">
@@ -26,7 +29,7 @@ function SingelSaleTable({ sale, index, handleInfoSave, toggleModal, isModalOpen
             <td className="p-3 border sm:text-[12px] text-[9px]  relative">{sale.profit}
                 {/* modal btn  */}
                 {/* // role === "admin" && */}
-                <label htmlFor="my-modal-4" className="" onClick={toggleModal}>
+                <label htmlFor="my-modal-4" className="" onClick={() => openModal(sale._id)}>
                     <FaRegEdit
                         className='absolute right-0 top-0 text-yellow-600 cursor-pointer'></FaRegEdit>
                 </label>
@@ -35,7 +38,7 @@ function SingelSaleTable({ sale, index, handleInfoSave, toggleModal, isModalOpen
 
                 {/* modal  */}
 
-                {isModalOpen && (
+                {openModalId === sale._id && (
                     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                         <div className="modal modal-open">
                             <div className="modal-box">
@@ -48,24 +51,24 @@ function SingelSaleTable({ sale, index, handleInfoSave, toggleModal, isModalOpen
                                         <div className="px-4 py-5 bg-white sm:p-6">
                                             <div className="flex">
 
-                                                <div className="col-span-6 w-32 mx-2cd   sm:col-span-2">
+                                                <div className="col-span-6  mx-2 sm:col-span-2">
                                                     <label htmlFor="itemName" className="block text-sm font-medium text-gray-700">Item Name</label>
                                                     <input id="itemName" name="itemName" defaultValue={sale.itemName}
                                                         type="text" autoComplete="country-name" className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 
                                                     />
                                                 </div>
-                                                <div className="col-span-6 w-32 mx-2cd   sm:col-span-2 ">
+                                                <div className="col-span-6 w-32 mx-2 sm:col-span-2 ">
                                                     <label htmlFor="kg" className="block text-sm font-medium text-gray-700">Qty</label>
                                                     <input type={"text"} id="kg" name="kg" autoComplete="kg" defaultValue={sale.kg} className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                     />
                                                 </div>
-                                                <div className="col-span-6 w-32 mx-2cd   sm:col-span-2 ">
+                                                <div className="col-span-6 w-32 mx-2 sm:col-span-2 ">
                                                     <label htmlFor="amount" className="block text-sm font-medium text-gray-700">Amount</label>
                                                     <input type={"text"} id="amount" name="amount" autoComplete="amount" defaultValue={sale.amount} className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                     />
                                                 </div>
-                                                <div className="col-span-6 w-32 mx-2cd   sm:col-span-2 ">
+                                                <div className="col-span-6 w-32 mx-2 sm:col-span-2 ">
                                                     <label htmlFor="profit" className="block text-sm font-medium text-gray-700">Profit</label>
                                                     <input type={"text"} id="profit" name="profit" autoComplete="profit" defaultValue={sale.profit} className="text-center mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                                     />
@@ -85,7 +88,7 @@ function SingelSaleTable({ sale, index, handleInfoSave, toggleModal, isModalOpen
 
                                 {/* Modal actions */}
                                 <div className="modal-action">
-                                    <button className="btn" onClick={toggleModal}>
+                                    <button className="btn" onClick={closeModal}>
                                         Close
                                     </button>
                                 </div>
